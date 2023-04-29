@@ -15,7 +15,6 @@ logging 3.17.6
 metallb 0.12.1
 metrics-server 3.8.2
 monitoring 44.3.0
-nacos 2.1.1
 node-local-dns 0.2.1
 node-problem-detector 2.2.2
 nvidia-device-plugin 0.11.0
@@ -25,6 +24,5 @@ profiling 0.2.86
 prometheus-cloud-dial 0.22.0
 prometheus-node-exporter 3.3.0
 seldon 1.16.0
-tke-gpu-manager 1.1.5
 tracing 2.34.1
 volume-snapshoter 5.0.1
