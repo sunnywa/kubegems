@@ -1,17 +1,8 @@
-argo-rollouts 2.14.0
-eventer 2.1.6
-gateway 0.3.2
 global 1.0.0
 grafana 6.29.7
 local-path 0.0.22
 logging 3.17.6
 metrics-server 3.8.2
 monitoring 44.3.0
-node-local-dns 0.2.1
-node-problem-detector 2.2.2
 opentelemetry 0.28.2
-profiling 0.2.86
-prometheus-cloud-dial 0.22.0
 prometheus-node-exporter 3.3.0
-tracing 2.34.1
-volume-snapshoter 5.0.1
