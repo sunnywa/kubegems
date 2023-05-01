@@ -68,13 +68,13 @@ jobs:
           registry: ${{ secrets.REGISTRY }}
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
-      - name: Log into registry ${{ env.SECONDARY_REGISTRY }}
-        if: github.event_name != 'pull_request'
-        uses: docker/login-action@v2.0.0
-        with:
-          registry: ${{ secrets.SECONDARY_REGISTRY }}
-          username: ${{ secrets.SECONDARY_REGISTRY_USERNAME }}
-          password: ${{ secrets.SECONDARY_REGISTRY_PASSWORD }}
+#       - name: Log into registry ${{ env.SECONDARY_REGISTRY }}
+#         if: github.event_name != 'pull_request'
+#         uses: docker/login-action@v2.0.0
+#         with:
+#           registry: ${{ secrets.SECONDARY_REGISTRY }}
+#           username: ${{ secrets.SECONDARY_REGISTRY_USERNAME }}
+#           password: ${{ secrets.SECONDARY_REGISTRY_PASSWORD }}
       - name: Build Docker
         env: 
           GIT_VERSION: ${{ github.ref_name }}
