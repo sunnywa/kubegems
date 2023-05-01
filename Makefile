@@ -17,7 +17,7 @@ BIN_DIR?=bin
 PLATFORM?=linux/amd64,linux/arm64
 
 IMAGE_REGISTRY?=docker.io
-IMAGE_TAG=${GIT_VERSION}
+IMAGE_TAG=${GIT_VERSION}-${GIT_COMMIT}
 PUSH?=false
 
 GOPACKAGE=$(shell go list -m)
