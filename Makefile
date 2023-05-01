@@ -16,7 +16,7 @@ ARCH?=amd64
 BIN_DIR?=bin
 PLATFORM?=linux/amd64,linux/arm64
 
-IMAGE_REGISTRY?=docker.io,registry.cn-beijing.aliyuncs.com
+IMAGE_REGISTRY?=docker.io
 IMAGE_TAG=${GIT_VERSION}
 PUSH?=false
 
@@ -175,18 +175,18 @@ endif
 docker: kubegems-image kubegems-edge-image ## Build container image.
 
 kubegems-image:
-	$(call buildxbuild,kubegems/kubegems:$(IMAGE_TAG)) -f Dockerfile ${BIN_DIR}	
+	$(call buildxbuild,wangqi45857189/kubegems:$(IMAGE_TAG)) -f Dockerfile ${BIN_DIR}	
 
 debug-image:
-	$(call buildxbuild,kubegems/debug-tools:latest) -f Dockerfile.debug ${BIN_DIR}
+	$(call buildxbuild,wangqi45857189/debug-tools:latest) -f Dockerfile.debug ${BIN_DIR}
 
 kubegems-edge-image: kubegems-edge-agent-image
 
 kubegems-edge-agent-image:
-	$(call buildxbuild,kubegems/kubegems-edge-agent:$(IMAGE_TAG)) -f Dockerfile.edge-agent ${BIN_DIR}
+	$(call buildxbuild,wangqi45857189/kubegems-edge-agent:$(IMAGE_TAG)) -f Dockerfile.edge-agent ${BIN_DIR}
 
 kubectl-image:
-	$(call buildxbuild,kubegems/kubectl:latest) -f Dockerfile.kubectl ${BIN_DIR}
+	$(call buildxbuild,wangqi45857189/kubectl:latest) -f Dockerfile.kubectl ${BIN_DIR}
 
 clean:
 	- rm -rf ${BIN_DIR}
