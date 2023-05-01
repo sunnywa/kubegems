@@ -6,7 +6,7 @@ SHELL = /usr/bin/env bash -o pipefail
 
 BUILD_DATE?=$(shell date -u +'%Y-%m-%dT%H:%M:%SZ')
 GIT_VERSION?=$(shell git describe --tags --dirty --abbrev=0 2>/dev/null || git symbolic-ref --short HEAD)
-GIT_COMMIT?=$(shell git rev-parse HEAD 2>/dev/null)
+GIT_COMMIT?=$(shell git rev-parse --short HEAD 2>/dev/null)
 GIT_BRANCH?=$(shell git symbolic-ref --short HEAD 2>/dev/null)
 # semver version
 VERSION?=$(shell echo "${GIT_VERSION}" | sed -e 's/^v//')
