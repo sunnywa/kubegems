@@ -16,9 +16,7 @@ package clusterinfo
 
 import (
 	"crypto/tls"
-	"fmt"
 	"net/url"
-	"strings"
 	"time"
 )
 
@@ -42,15 +40,16 @@ func GetServerCertExpiredTime(serverURL string) (*time.Time, error) {
 		return nil, err
 	}
 	defer conn.Close()
+	return &conn.ConnectionState().PeerCertificates[0].NotAfter,nil
 
-	invalidCNs := []string{}
-	for _, cert := range conn.ConnectionState().PeerCertificates {
-		if strings.Contains(cert.Subject.CommonName, K8sAPIServerCertCN) ||
-			strings.Contains(cert.Subject.CommonName, K3sAPIServerCertCN) {
-			return &cert.NotAfter, nil
-		}
-		invalidCNs = append(invalidCNs, cert.Subject.CommonName)
-	}
+// 	invalidCNs := []string{}
+// 	for _, cert := range conn.ConnectionState().PeerCertificates {
+// 		if strings.Contains(cert.Subject.CommonName, K8sAPIServerCertCN) ||
+// 			strings.Contains(cert.Subject.CommonName, K3sAPIServerCertCN) {
+// 			return &cert.NotAfter, nil
+// 		}
+// 		invalidCNs = append(invalidCNs, cert.Subject.CommonName)
+// 	}
 
-	return nil, fmt.Errorf("cert CN not contains apiserver: %s", strings.Join(invalidCNs, ","))
+// 	return nil, fmt.Errorf("cert CN not contains apiserver: %s", strings.Join(invalidCNs, ","))
 }
