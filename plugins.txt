@@ -1,3 +1,6 @@
+argo-rollouts 2.14.0
+eventer 2.1.6
+gateway 0.3.2
 global 1.0.0
 grafana 6.29.7
 local-path 0.0.22
@@ -7,7 +10,10 @@ monitoring 44.3.0
 opentelemetry 0.28.2
 prometheus-node-exporter 3.3.0
 kubegems 1.23.8
-kubegems-edge 1.23.8
 kubegems-installer 1.23.8
 kubegems-local 1.23.8
-kubegems-models 1.23.8
+istio 1.11.7
+metrics-server 3.8.2
+nacos 2.1.1
+tracing 2.34.1
+volume-snapshoter 5.0.1
