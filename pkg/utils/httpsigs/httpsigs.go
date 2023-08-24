@@ -87,9 +87,9 @@ func (s *Signer) Validate(req *http.Request) error {
 	n := time.Now()
 	after := n.Add(time.Second * time.Duration(s.Duration)).Unix()
 	before := n.Add(time.Second * (-1 * time.Duration(s.Duration))).Unix()
-//	if timestamp > after || timestamp < before {
-//		return fmt.Errorf("httpsigs time out, origin: %s, now: %v", timeStr, n)
-//	}
+	if true || timestamp > after || timestamp < before {
+		return fmt.Errorf("httpsigs time out, origin: %s, now: %v", timeStr, n)
+	}
 	toSignStr := path + timeStr + s.Token
 	signOut := fmt.Sprintf("%x", md5.Sum([]byte(toSignStr)))
 	if signOut != token {
