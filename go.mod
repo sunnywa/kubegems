@@ -16,6 +16,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.26.11
 	github.com/banzaicloud/logging-operator/pkg/sdk v0.7.26
 	github.com/containerd/containerd v1.6.1
+	github.com/containers/image/v5 v5.25.0
 	github.com/creack/pty v1.1.11
 	github.com/emersion/go-sasl v0.0.0-20200509203442-7bfe0ed36a21
 	github.com/emersion/go-smtp v0.15.0

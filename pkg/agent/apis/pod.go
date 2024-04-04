@@ -420,6 +420,8 @@ func (fd *FileTransfer) Download(c *gin.Context) error {
 			"filename": path.Base(fd.Filename) + ".tgz",
 		}),
 	)
+	c.Header("Content-Type", "application/octet-stream")
+	c.Header("Transfer-Encoding", "chunked")
 	pe := PodCmdExecutor{
 		Cluster: fd.Cluster,
 		Pod: client.ObjectKey{
@@ -430,10 +432,11 @@ func (fd *FileTransfer) Download(c *gin.Context) error {
 			Container: fd.Container,
 			Stdout:    true,
 			Stderr:    true,
-			Command:   []string{"tar", "cf", "-", fd.Filename},
+			Command:   []string{"tar", "czf", "-", fd.Filename},
 		},
 		StreamOptions: remotecommand.StreamOptions{
 			Stdout: RateLimitWriter(c.Request.Context(), c.Writer, 1024*1024),
+			//Stdout: c.Writer,
 			Stderr: &fakeStdoutWriter{},
 		},
 	}
