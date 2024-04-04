@@ -20,6 +20,8 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/containers/image/v5/docker"
+	"github.com/containers/image/v5/types"
 	"io"
 	"net/http"
 	"net/url"
@@ -29,8 +31,6 @@ import (
 
 	containerdreference "github.com/containerd/containerd/reference"
 	dockerreference "github.com/containerd/containerd/reference/docker"
-	"github.com/containers/image/v5/docker"
-	"github.com/containers/image/v5/types"
 	"github.com/goharbor/harbor/src/common"
 	harborerrors "github.com/goharbor/harbor/src/lib/errors"
 	"github.com/goharbor/harbor/src/pkg/artifact"
