@@ -175,6 +175,8 @@ func (c *CommonClient) doRequestWithResponse(ctx context.Context, method string,
 		body = bytes.NewReader(bts)
 	}
 
+
+	
 	req, err := http.NewRequestWithContext(ctx, method, c.Server+path, body)
 	if err != nil {
 		return nil, err
@@ -183,7 +185,9 @@ func (c *CommonClient) doRequestWithResponse(ctx context.Context, method string,
 	if c.Auth != nil {
 		c.Auth(req)
 	}
-
+	tr := &http.Transport{TLSClientConfig: &tls.Config{InsecureSkipVerifu: true}}
+	c.Client.Transport = tr
+	
 	resp, err := c.Client.Do(req)
 	if err != nil {
 		return resp, err
