@@ -60,7 +60,8 @@ func NewLegencyRepository(cfg *RepositoryConfig) (*LegencyRepository, error) {
 			Transport: &http.Transport{
 				TLSClientConfig: &tls.Config{
 					// todo: cert key parse
-					InsecureSkipVerify: cfg.SkipTLSVerify,
+					// InsecureSkipVerify: cfg.SkipTLSVerify,
+					InsecureSkipVerify: true,
 				},
 			},
 		},
