@@ -80,7 +80,7 @@ func HTTPGet(ctx context.Context, href string) (io.ReadCloser, error) {
 		return nil, err
 	}
 
-	tr := &http.Transport{TLSClientConfig: &tls.Config{InsecureSkipVerifu: true}}
+	tr := &http.Transport{TLSClientConfig: &tls.Config{InsecureSkipVerify: true}}
 	http.DefaultClient.Transport = tr
 	
 	resp, err := http.DefaultClient.Do(req)
