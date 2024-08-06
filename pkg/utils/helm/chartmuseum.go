@@ -186,7 +186,7 @@ func (c *CommonClient) doRequestWithResponse(ctx context.Context, method string,
 	if c.Auth != nil {
 		c.Auth(req)
 	}
-	tr := &http.Transport{TLSClientConfig: &tls.Config{InsecureSkipVerifu: true}}
+	tr := &http.Transport{TLSClientConfig: &tls.Config{InsecureSkipVerify: true}}
 	c.Client.Transport = tr
 	
 	resp, err := c.Client.Do(req)
