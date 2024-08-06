@@ -16,6 +16,7 @@ package helm
 
 import (
 	"context"
+	"crypto/tls"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -78,6 +79,10 @@ func HTTPGet(ctx context.Context, href string) (io.ReadCloser, error) {
 	if err != nil {
 		return nil, err
 	}
+
+	tr := &http.Transport{TLSClientConfig: &tls.Config{InsecureSkipVerifu: true}}
+	http.DefaultClient.Transport = tr
+	
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return nil, err
